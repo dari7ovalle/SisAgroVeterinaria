@@ -10,6 +10,21 @@
     <AssemblyName>SisAgroVeterinaria</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,7 +46,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,14 +66,153 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="BLL\CiudadesBLL.cs" />
+    <Compile Include="BLL\ClienteBLL.cs" />
+    <Compile Include="BLL\ConfiguracionesBLL.cs" />
+    <Compile Include="BLL\InventarioBLL.cs" />
+    <Compile Include="BLL\ProductosBLL.cs" />
+    <Compile Include="BLL\TipoProductoBLL.cs" />
+    <Compile Include="BLL\UsuariosBLL.cs" />
+    <Compile Include="BLL\VentaBLL.cs" />
+    <Compile Include="BLL\VentaDetallesBLL.cs" />
+    <Compile Include="Consultas\cCiudades.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Consultas\cCiudades.Designer.cs">
+      <DependentUpon>cCiudades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\cClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\cClientes.Designer.cs">
+      <DependentUpon>cClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\cInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\cInventario.Designer.cs">
+      <DependentUpon>cInventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\cProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\cProductos.Designer.cs">
+      <DependentUpon>cProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\cTipoProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\cTipoProducto.Designer.cs">
+      <DependentUpon>cTipoProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\cUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\cUsuarios.Designer.cs">
+      <DependentUpon>cUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\cVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\cVentas.Designer.cs">
+      <DependentUpon>cVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\SisAgroveterinariaDb.cs" />
+    <Compile Include="Entidades\Ciudades.cs" />
+    <Compile Include="Entidades\Clientes.cs" />
+    <Compile Include="Entidades\Configuraciones.cs" />
+    <Compile Include="Entidades\Inventario.cs" />
+    <Compile Include="Entidades\Productos.cs" />
+    <Compile Include="Entidades\TipoProductos.cs" />
+    <Compile Include="Entidades\Usuarios.cs" />
+    <Compile Include="Entidades\VentaDetalles.cs" />
+    <Compile Include="Entidades\Ventas.cs" />
+    <Compile Include="AgroVeterinariaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgroVeterinariaForm.Designer.cs">
+      <DependentUpon>AgroVeterinariaForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registros\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registros\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registros\rCiudades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registros\rCiudades.Designer.cs">
+      <DependentUpon>rCiudades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registros\rClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registros\rClientes.Designer.cs">
+      <DependentUpon>rClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registros\rConfiguraciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registros\rConfiguraciones.Designer.cs">
+      <DependentUpon>rConfiguraciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registros\rInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registros\rInventario.Designer.cs">
+      <DependentUpon>rInventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registros\rProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registros\rProductos.Designer.cs">
+      <DependentUpon>rProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registros\rTipoProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registros\rTipoProducto.Designer.cs">
+      <DependentUpon>rTipoProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registros\rUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registros\rUsuario.Designer.cs">
+      <DependentUpon>rUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registros\rVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registros\rVenta.Designer.cs">
+      <DependentUpon>rVenta.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AgroVeterinariaForm.resx">
+      <DependentUpon>AgroVeterinariaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\cCiudades.resx">
+      <DependentUpon>cCiudades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\cClientes.resx">
+      <DependentUpon>cClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\cInventario.resx">
+      <DependentUpon>cInventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\cProductos.resx">
+      <DependentUpon>cProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\cTipoProducto.resx">
+      <DependentUpon>cTipoProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\cUsuarios.resx">
+      <DependentUpon>cUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\cVentas.resx">
+      <DependentUpon>cVentas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -60,7 +221,36 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Registros\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registros\rCiudades.resx">
+      <DependentUpon>rCiudades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registros\rClientes.resx">
+      <DependentUpon>rClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registros\rConfiguraciones.resx">
+      <DependentUpon>rConfiguraciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registros\rInventario.resx">
+      <DependentUpon>rInventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registros\rProductos.resx">
+      <DependentUpon>rProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registros\rTipoProducto.resx">
+      <DependentUpon>rTipoProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registros\rUsuario.resx">
+      <DependentUpon>rUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registros\rVenta.resx">
+      <DependentUpon>rVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -73,6 +263,66 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel_icon-icons.com_73703.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\xmag_search_find_export_locate_5984.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\xmag_search_find_export_locate_59841.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\Agroveterinaria_Db.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Database\Agroveterinaria_Db_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>Agroveterinaria_Db.mdf</DependentUpon>
+    </Content>
+    <None Include="Resources\x-17-326.png" />
+    <None Include="Resources\Save-as7.png" />
+    <None Include="Resources\new-24-327.png" />
+    <None Include="Resources\lupe-327.png" />
+    <None Include="Resources\x-17-325.png" />
+    <None Include="Resources\Save-as6.png" />
+    <None Include="Resources\new-24-326.png" />
+    <None Include="Resources\lupe-326.png" />
+    <None Include="Resources\x-17-324.png" />
+    <None Include="Resources\Save-as5.png" />
+    <None Include="Resources\new-24-325.png" />
+    <None Include="Resources\lupe-325.png" />
+    <None Include="Resources\x-17-323.png" />
+    <None Include="Resources\Save-as4.png" />
+    <None Include="Resources\new-24-324.png" />
+    <None Include="Resources\lupe-324.png" />
+    <None Include="Resources\Save-as3.png" />
+    <None Include="Resources\new-24-323.png" />
+    <None Include="Resources\lupe-323.png" />
+    <None Include="Resources\Save-as2.png" />
+    <None Include="Resources\new-24-322.png" />
+    <None Include="Resources\lupe-322.png" />
+    <None Include="Resources\zoom-321.png" />
+    <None Include="Resources\x-17-322.png" />
+    <None Include="Resources\Save-as1.png" />
+    <None Include="Resources\new-24-321.png" />
+    <None Include="Resources\x-17-321.png" />
+    <None Include="Resources\Save-as.png" />
+    <None Include="Resources\secure-server-px-png.png" />
+    <None Include="Resources\x-17-32.png" />
+    <None Include="Resources\new-24-32.png" />
+    <None Include="Resources\lupe-321.png" />
+    <None Include="Resources\lupe-32.png" />
+    <None Include="Resources\zoom-32.png" />
+    <None Include="Resources\if_start_71143.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
