@@ -14,24 +14,29 @@ namespace SisAgroVeterinaria.BLL
     {
 
         public static bool Guardar(Ventas venta)
+        {
+            bool estado = false;
+            try
             {
-                bool estado = false;
-                try
+                SisAgroveterinariaDb context = new SisAgroveterinariaDb();
+                context.ventas.Add(venta);
+                foreach (VentaDetalles Detalle in venta.Detalle)
                 {
-                    SisAgroveterinariaDb context = new SisAgroveterinariaDb();
-                    context.ventas.Add(venta);
-                    context.SaveChanges();
-                    estado = true;
-
+                    context.ventaDetalles.Add(Detalle);
                 }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-                return estado;
+                context.SaveChanges();
+                context.Dispose();
+                estado = true;
 
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return estado;
+
+        }
         public static bool Editar(Ventas ventas)
         {
             bool estado = false;
@@ -54,68 +59,86 @@ namespace SisAgroVeterinaria.BLL
         }
 
         public static Ventas Buscar(int Id)
-            {
+        {
             Ventas venta = new Ventas();
-                try
-                {
-                    SisAgroveterinariaDb context = new SisAgroveterinariaDb();
+            try
+            {
+                SisAgroveterinariaDb context = new SisAgroveterinariaDb();
                 venta = context.ventas.Find(Id);
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-
-                return venta;
-
             }
-
-            public static bool Eliminar(int ventaId)
+            catch (Exception)
             {
-            Ventas venta = null;
-                bool estado = false;
-                try
-                {
-                    SisAgroveterinariaDb context = new SisAgroveterinariaDb();
-                venta = context.ventas.Find(venta);
-                    context.ventas.Remove(venta);
-                    context.SaveChanges();
-
-                    estado = true;
-
-                }
-                catch (Exception)
-                {
-                    throw;
-
-                }
-                return estado;
+                throw;
             }
 
-            public static List<Ventas> GetList(Expression<Func<Ventas, bool>> criterioBusqueda)
-            {
-                List<Ventas> venta = new List<Ventas>();
-                try
-                {
-                    SisAgroveterinariaDb context = new SisAgroveterinariaDb();
-                venta = context.ventas.Where(criterioBusqueda).ToList();
-                }
-
-                catch (Exception)
-                {
-                    throw;
-                }
-
-                return venta;
-            }
-
-
-
-
+            return venta;
 
         }
+
+        public static bool Eliminar(int ventaId)
+        {
+            Ventas venta = null;
+            bool estado = false;
+            try
+            {
+                SisAgroveterinariaDb context = new SisAgroveterinariaDb();
+                venta = context.ventas.Find(venta);
+                context.ventas.Remove(venta);
+                context.SaveChanges();
+
+                estado = true;
+
+            }
+            catch (Exception)
+            {
+                throw;
+
+            }
+            return estado;
+        }
+
+        public static List<Ventas> GetList(Expression<Func<Ventas, bool>> criterioBusqueda)
+        {
+            List<Ventas> venta = new List<Ventas>();
+            try
+            {
+                SisAgroveterinariaDb context = new SisAgroveterinariaDb();
+                venta = context.ventas.Where(criterioBusqueda).ToList();
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return venta;
+        }
+
+        //public static List<Ventas> GetVentaNombre(string nombre)
+        //{
+        //    List<Ventas> lista = new List<Ventas>();
+        //    SisAgroveterinariaDb context = new SisAgroveterinariaDb();
+        //    lista = context.ventas.Where(c => c.Fecha == nombre).ToList();
+        //    return lista;
+        //}
+        //busca esto nigga
+        //public static List<Clientes> ListarTodo()
+        //{
+        //    List<Clientes> lista = null;
+        //    SisAgroveterinariaDb context = new SisAgroveterinariaDb();
+
+        //    lista = context.clientes.ToList();
+
+
+        //    return lista;
+        //}
+
 
 
 
     }
+
+
+
+}
 

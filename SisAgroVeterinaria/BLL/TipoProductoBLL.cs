@@ -107,7 +107,42 @@ namespace SisAgroVeterinaria.BLL
             return tipoproducto;
         }
 
+        public static List<TipoProductos> GetList()
+        {
+            var lista = new List<TipoProductos>();
+            SisAgroveterinariaDb context = new SisAgroveterinariaDb();
 
+            try
+            {
+                lista = context.tipoProductos.ToList();
+            }
+            catch (Exception e)
+            {
+                lista = null;
+            }
+
+            return lista;
+        }
+
+
+        public static List<TipoProductos> GetTipoProductosNombre(string nombre)
+        {
+            List<TipoProductos> lista = new List<TipoProductos>();
+            SisAgroveterinariaDb context = new SisAgroveterinariaDb();
+            lista = context.tipoProductos.Where(c => c.Nombres == nombre).ToList();
+            return lista;
+        }
+        
+        public static List<TipoProductos> ListarTodo()
+        {
+            List<TipoProductos> lista = null;
+            SisAgroveterinariaDb context = new SisAgroveterinariaDb();
+
+            lista = context.tipoProductos.ToList();
+
+
+            return lista;
+        }
 
 
 

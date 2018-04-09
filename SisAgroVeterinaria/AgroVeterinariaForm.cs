@@ -84,7 +84,8 @@ namespace SisAgroVeterinaria
 
         private void consultaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            
+            Consultas.cClientes tipop = new Consultas.cClientes();
+            tipop.Show();
         }
 
         private void consultasToolStripMenuItem_Click(object sender, EventArgs e)

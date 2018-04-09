@@ -28,16 +28,16 @@ namespace SisAgroVeterinaria.Registros
 
         private void Iniciarbutton_Click(object sender, EventArgs e)
         {
-            if (UsuariosBLL.Login(NombretextBox.Text,ContraseñatextBox.Text))
-            {
+           // if (UsuariosBLL.Login(NombretextBox.Text,ContraseñatextBox.Text))
+            //{
                 AgroVeterinariaForm agro = new AgroVeterinariaForm();
                 agro.Show();
                 this.Hide();
-            }
-            else
-            {
-                MessageBox.Show("Error");
-            }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Error");
+            //}
         }
 
         private void Cancelarbutton_Click(object sender, EventArgs e)

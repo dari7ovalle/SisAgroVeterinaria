@@ -35,6 +35,11 @@
             this.ClientetextBox = new System.Windows.Forms.TextBox();
             this.ProductotextBox = new System.Windows.Forms.TextBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Agregarbutton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.ProductotextBox4 = new System.Windows.Forms.TextBox();
@@ -45,7 +50,7 @@
             this.FechatextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.ContadoradioButton = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.TotaltextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -109,11 +114,51 @@
             // 
             // dataGridView
             // 
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5});
             this.dataGridView.Location = new System.Drawing.Point(45, 192);
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
             this.dataGridView.Size = new System.Drawing.Size(622, 150);
             this.dataGridView.TabIndex = 9;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "ProductoId";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Nombre";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 180;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Precio";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Cantidad";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Importe";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // Agregarbutton
             // 
@@ -123,6 +168,7 @@
             this.Agregarbutton.TabIndex = 10;
             this.Agregarbutton.Text = "Agregar";
             this.Agregarbutton.UseVisualStyleBackColor = true;
+            this.Agregarbutton.Click += new System.EventHandler(this.Agregarbutton_Click);
             // 
             // label4
             // 
@@ -192,7 +238,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radioButton2);
+            this.groupBox1.Controls.Add(this.ContadoradioButton);
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Location = new System.Drawing.Point(427, 12);
             this.groupBox1.Name = "groupBox1";
@@ -201,16 +247,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "TipoVenta";
             // 
-            // radioButton2
+            // ContadoradioButton
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(7, 50);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(65, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Contado";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.ContadoradioButton.AutoSize = true;
+            this.ContadoradioButton.Checked = true;
+            this.ContadoradioButton.Location = new System.Drawing.Point(7, 50);
+            this.ContadoradioButton.Name = "ContadoradioButton";
+            this.ContadoradioButton.Size = new System.Drawing.Size(65, 17);
+            this.ContadoradioButton.TabIndex = 1;
+            this.ContadoradioButton.TabStop = true;
+            this.ContadoradioButton.Text = "Contado";
+            this.ContadoradioButton.UseVisualStyleBackColor = true;
             // 
             // radioButton1
             // 
@@ -251,6 +298,7 @@
             this.Eliminarbutton.Text = "Eliminar";
             this.Eliminarbutton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Eliminarbutton.UseVisualStyleBackColor = true;
+            this.Eliminarbutton.Click += new System.EventHandler(this.Eliminarbutton_Click);
             // 
             // Guardarbutton
             // 
@@ -286,6 +334,7 @@
             this.BuscarProductobutton.Size = new System.Drawing.Size(50, 30);
             this.BuscarProductobutton.TabIndex = 8;
             this.BuscarProductobutton.UseVisualStyleBackColor = true;
+            this.BuscarProductobutton.Click += new System.EventHandler(this.BuscarProductobutton_Click);
             // 
             // BuscarClientebutton
             // 
@@ -295,6 +344,7 @@
             this.BuscarClientebutton.Size = new System.Drawing.Size(50, 30);
             this.BuscarClientebutton.TabIndex = 7;
             this.BuscarClientebutton.UseVisualStyleBackColor = true;
+            this.BuscarClientebutton.Click += new System.EventHandler(this.BuscarClientebutton_Click);
             // 
             // BuscarVentabutton
             // 
@@ -304,6 +354,7 @@
             this.BuscarVentabutton.Size = new System.Drawing.Size(50, 30);
             this.BuscarVentabutton.TabIndex = 6;
             this.BuscarVentabutton.UseVisualStyleBackColor = true;
+            this.BuscarVentabutton.Click += new System.EventHandler(this.BuscarVentabutton_Click);
             // 
             // rVenta
             // 
@@ -337,7 +388,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "rVenta";
-            this.Text = "rVenta";
+            this.Text = " b";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -368,12 +419,17 @@
         private System.Windows.Forms.TextBox FechatextBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton ContadoradioButton;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Button Nuevobutton;
         private System.Windows.Forms.Button Guardarbutton;
         private System.Windows.Forms.Button Eliminarbutton;
         private System.Windows.Forms.TextBox TotaltextBox;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }

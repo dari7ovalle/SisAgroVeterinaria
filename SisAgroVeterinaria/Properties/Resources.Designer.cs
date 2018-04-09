@@ -333,6 +333,16 @@ namespace SisAgroVeterinaria.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap secure_server_px_png1 {
+            get {
+                object obj = ResourceManager.GetObject("secure-server-px-png1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap x_17_32 {
             get {
                 object obj = ResourceManager.GetObject("x-17-32", resourceCulture);
@@ -396,6 +406,16 @@ namespace SisAgroVeterinaria.Properties {
         internal static System.Drawing.Bitmap x_17_326 {
             get {
                 object obj = ResourceManager.GetObject("x-17-326", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap x_17_327 {
+            get {
+                object obj = ResourceManager.GetObject("x-17-327", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

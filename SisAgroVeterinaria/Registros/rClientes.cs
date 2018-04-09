@@ -18,6 +18,13 @@ namespace SisAgroVeterinaria.Registros
         public rClientes()
         {
             InitializeComponent();
+            cargarCombobox();
+        }
+        void cargarCombobox()
+        {
+            CiudadIdcomboBox.DataSource = BLL.CiudadesBLL.GetList();
+            CiudadIdcomboBox.ValueMember = "CiudadId";
+            CiudadIdcomboBox.DisplayMember = "Nombres";
         }
 
        Clientes llenarClase()
@@ -26,12 +33,14 @@ namespace SisAgroVeterinaria.Registros
             cliente.Nombres = NombretextBox.Text;
             cliente.Apellidos = ApellidostextBox.Text;
             cliente.Cedula = CedulatextBox.Text;
-            cliente.Cedula = CedulatextBox.Text;
+            cliente.Celular = CelulartextBox6.Text;
             cliente.Direccion = DirecciontextBox.Text;
             cliente.Telefono = TelefonotextBox.Text;
             int id = 0;
             int.TryParse(IdtextBox.Text, out id);
-           
+            cliente.ClienteId = id;
+            cliente.CiudadId = int.Parse(CiudadIdcomboBox.SelectedValue.ToString());
+
             return cliente;
         }
 
@@ -45,22 +54,26 @@ namespace SisAgroVeterinaria.Registros
             CedulatextBox.Clear();
             CelulartextBox6.Clear();
             TelefonotextBox.Clear();
-            //CiudadIdcomboBox.Clear();
+            CiudadIdcomboBox.SelectedIndex = 0;
             DirecciontextBox.Clear();
         }
         private void Guardarbutton_Click(object sender, EventArgs e)
         {
-            if (ClienteBLL.Buscar(1) == null)
-            {
-                if (ClienteBLL.Guardar(llenarClase()))
-                {
-                    MessageBox.Show("Guardado Correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Error al Guardar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            int id = 0;
+            int.TryParse(IdtextBox.Text, out id);
+            if (id <=0){
+             
+                    if (ClienteBLL.Guardar(llenarClase()))
+                    {
+                        MessageBox.Show("Guardado Correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al Guardar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    
                 }
             }
+           
             else
             {
 
@@ -79,6 +92,39 @@ namespace SisAgroVeterinaria.Registros
         {
             LimpiarTextBox();
 
+        }
+
+        private void Buscarbutton_Click(object sender, EventArgs e)
+        {
+            Clientes clientes  = ClienteBLL.Buscar(int.Parse(IdtextBox.Text));
+            if (clientes != null)
+            {
+                NombretextBox.Text = clientes.Nombres;
+                ApellidostextBox.Text = clientes.Apellidos;
+                CedulatextBox.Text = clientes.Cedula;
+                TelefonotextBox.Text = clientes.Telefono;
+                CelulartextBox6.Text = clientes.Celular;
+                DirecciontextBox.Text = clientes.Direccion;
+                CiudadIdcomboBox.SelectedValue = clientes.CiudadId;
+            }
+            else
+            {
+                MessageBox.Show(" Cliente  no existe ");
+            }
+        }
+
+        private void Eliminarbutton_Click(object sender, EventArgs e)
+        {
+            if (ClienteBLL.Eliminar(int.Parse(IdtextBox.Text)))
+            {
+                MessageBox.Show(" fue eliminado");
+
+            }
+
+            else
+            {
+                MessageBox.Show(" no se pudo eliminar");
+            }
         }
     }
 }

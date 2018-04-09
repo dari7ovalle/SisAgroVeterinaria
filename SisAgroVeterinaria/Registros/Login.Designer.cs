@@ -101,6 +101,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
+            this.BackgroundImage = global::SisAgroVeterinaria.Properties.Resources.secure_server_px_png1;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(204, 193);
             this.Controls.Add(this.Cancelarbutton);
             this.Controls.Add(this.Iniciarbutton);
@@ -108,6 +110,7 @@
             this.Controls.Add(this.NombretextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.DoubleBuffered = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Login";

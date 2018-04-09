@@ -18,6 +18,10 @@ namespace SisAgroVeterinaria.Entidades
         public double Importe { get; set; }
 
 
+       // public virtual List<Productos> producto { get; set; }
+       
+
+
         public VentaDetalles()
         {
             this.VentaDetallesId = 0;
@@ -26,9 +30,16 @@ namespace SisAgroVeterinaria.Entidades
             this.Cantidad = 0;
             this.Precio = 0;
             this.Importe = 0;
+            //this.producto = new List<Productos>();
         }
 
-
+        public VentaDetalles(int ProductoId, int Cantidad, int Precio, double Importe)
+        {
+            this.ProductoId = ProductoId;
+            this.Cantidad = Cantidad;
+            this.Precio = Precio;
+            this.Importe = Importe;
+        }
 
         public VentaDetalles(int VentaDetallesId, int VentaId, int ProductoId, int Cantidad, int Precio, double Importe)
         {

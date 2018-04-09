@@ -42,6 +42,7 @@
             this.ProductodataGridView1.Name = "ProductodataGridView1";
             this.ProductodataGridView1.Size = new System.Drawing.Size(647, 270);
             this.ProductodataGridView1.TabIndex = 15;
+            this.ProductodataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductodataGridView1_CellClick);
             // 
             // button1
             // 
@@ -59,11 +60,13 @@
             this.BuscartextBox.Name = "BuscartextBox";
             this.BuscartextBox.Size = new System.Drawing.Size(411, 20);
             this.BuscartextBox.TabIndex = 13;
+            this.BuscartextBox.TextChanged += new System.EventHandler(this.BuscartextBox_TextChanged);
             // 
             // BuscarcomboBox
             // 
             this.BuscarcomboBox.FormattingEnabled = true;
             this.BuscarcomboBox.Items.AddRange(new object[] {
+            "Todo",
             "Id",
             "Nombre"});
             this.BuscarcomboBox.Location = new System.Drawing.Point(23, 52);
@@ -82,6 +85,7 @@
             this.Controls.Add(this.BuscarcomboBox);
             this.Name = "cProductos";
             this.Text = "cProductos";
+            this.Load += new System.EventHandler(this.cProductos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ProductodataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

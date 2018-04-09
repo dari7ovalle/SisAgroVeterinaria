@@ -53,7 +53,6 @@ namespace SisAgroVeterinaria.Registros
             }
             else
             {
-                //tiene que hacer el metodo Editar en UsuariosBLL
                 if (UsuariosBLL.Editar(llenarClase()))
                 {
                     MessageBox.Show("Modificado Correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -82,6 +81,20 @@ namespace SisAgroVeterinaria.Registros
             else
             {
                 MessageBox.Show(" El Usuario no existe ");
+            }
+        }
+
+        private void Eliminarbutton_Click(object sender, EventArgs e)
+        {
+            if (UsuariosBLL.Eliminar(int.Parse(IdtextBox.Text)))
+            {
+                MessageBox.Show(" fue eliminado");
+
+            }
+
+            else
+            {
+                MessageBox.Show(" no se pudo eliminar");
             }
         }
     }

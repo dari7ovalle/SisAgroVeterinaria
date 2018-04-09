@@ -59,11 +59,13 @@
             this.BuscartextBox.Name = "BuscartextBox";
             this.BuscartextBox.Size = new System.Drawing.Size(411, 20);
             this.BuscartextBox.TabIndex = 9;
+            this.BuscartextBox.TextChanged += new System.EventHandler(this.BuscartextBox_TextChanged);
             // 
             // BuscarcomboBox
             // 
             this.BuscarcomboBox.FormattingEnabled = true;
             this.BuscarcomboBox.Items.AddRange(new object[] {
+            "Todo",
             "Id",
             "Nombre"});
             this.BuscarcomboBox.Location = new System.Drawing.Point(36, 39);
@@ -82,6 +84,7 @@
             this.Controls.Add(this.BuscarcomboBox);
             this.Name = "cInventario";
             this.Text = "cInventario";
+            this.Load += new System.EventHandler(this.cInventario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.InventariodataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -39,6 +39,7 @@
             // 
             this.BuscarcomboBox.FormattingEnabled = true;
             this.BuscarcomboBox.Items.AddRange(new object[] {
+            "Todos",
             "Id",
             "Nombre"});
             this.BuscarcomboBox.Location = new System.Drawing.Point(12, 25);
@@ -52,6 +53,7 @@
             this.BuscartextBox.Name = "BuscartextBox";
             this.BuscartextBox.Size = new System.Drawing.Size(411, 20);
             this.BuscartextBox.TabIndex = 1;
+            this.BuscartextBox.TextChanged += new System.EventHandler(this.BuscartextBox_TextChanged);
             // 
             // Buscarbutton
             // 
@@ -70,6 +72,7 @@
             this.ClientedataGridView.Name = "ClientedataGridView";
             this.ClientedataGridView.Size = new System.Drawing.Size(647, 270);
             this.ClientedataGridView.TabIndex = 3;
+            this.ClientedataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClientedataGridView_CellClick);
             // 
             // cClientes
             // 
@@ -82,6 +85,7 @@
             this.Controls.Add(this.BuscarcomboBox);
             this.Name = "cClientes";
             this.Text = "cClientes";
+            this.Load += new System.EventHandler(this.cClientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ClientedataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -108,7 +108,24 @@ namespace SisAgroVeterinaria.BLL
             return inventarios;
         }
 
+        public static List<Inventario> GetInventarioNombre(string nombre)
+        {
+            List<Inventario> lista = new List<Inventario>();
+            SisAgroveterinariaDb context = new SisAgroveterinariaDb();
+            lista = context.inventario.Where(c => c.Nombre == nombre).ToList();
+            return lista;
+        }
+        //busca esto nigga
+        public static List<Inventario> ListarTodo()
+        {
+            List<Inventario> lista = null;
+            SisAgroveterinariaDb context = new SisAgroveterinariaDb();
 
+            lista = context.inventario.ToList();
+
+
+            return lista;
+        }
 
 
 

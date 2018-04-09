@@ -32,15 +32,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.IdtextBox = new System.Windows.Forms.TextBox();
             this.ProductotextBox = new System.Windows.Forms.TextBox();
             this.CantidadtextBox = new System.Windows.Forms.TextBox();
             this.FechatextBox = new System.Windows.Forms.TextBox();
-            this.NombretextBox = new System.Windows.Forms.TextBox();
-            this.Masbutton = new System.Windows.Forms.Button();
-            this.OKbutton = new System.Windows.Forms.Button();
+            this.button = new System.Windows.Forms.Button();
             this.Buscarbutton = new System.Windows.Forms.Button();
             this.Nuevobutton = new System.Windows.Forms.Button();
             this.Guardarbutton = new System.Windows.Forms.Button();
@@ -82,20 +79,11 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Fecha";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(25, 265);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Nombre";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
             // IdtextBox
             // 
             this.IdtextBox.Location = new System.Drawing.Point(81, 30);
             this.IdtextBox.Name = "IdtextBox";
+            this.IdtextBox.ReadOnly = true;
             this.IdtextBox.Size = new System.Drawing.Size(130, 20);
             this.IdtextBox.TabIndex = 6;
             // 
@@ -103,6 +91,7 @@
             // 
             this.ProductotextBox.Location = new System.Drawing.Point(81, 88);
             this.ProductotextBox.Name = "ProductotextBox";
+            this.ProductotextBox.ReadOnly = true;
             this.ProductotextBox.Size = new System.Drawing.Size(187, 20);
             this.ProductotextBox.TabIndex = 7;
             // 
@@ -110,40 +99,29 @@
             // 
             this.CantidadtextBox.Location = new System.Drawing.Point(80, 146);
             this.CantidadtextBox.Name = "CantidadtextBox";
-            this.CantidadtextBox.Size = new System.Drawing.Size(100, 20);
+            this.CantidadtextBox.Size = new System.Drawing.Size(187, 20);
             this.CantidadtextBox.TabIndex = 8;
             // 
             // FechatextBox
             // 
             this.FechatextBox.Location = new System.Drawing.Point(80, 209);
             this.FechatextBox.Name = "FechatextBox";
+            this.FechatextBox.ReadOnly = true;
             this.FechatextBox.Size = new System.Drawing.Size(187, 20);
             this.FechatextBox.TabIndex = 9;
             // 
-            // NombretextBox
+            // button
             // 
-            this.NombretextBox.Location = new System.Drawing.Point(81, 258);
-            this.NombretextBox.Name = "NombretextBox";
-            this.NombretextBox.Size = new System.Drawing.Size(187, 20);
-            this.NombretextBox.TabIndex = 10;
-            // 
-            // Masbutton
-            // 
-            this.Masbutton.Location = new System.Drawing.Point(193, 146);
-            this.Masbutton.Name = "Masbutton";
-            this.Masbutton.Size = new System.Drawing.Size(31, 23);
-            this.Masbutton.TabIndex = 14;
-            this.Masbutton.Text = "+";
-            this.Masbutton.UseVisualStyleBackColor = true;
-            // 
-            // OKbutton
-            // 
-            this.OKbutton.Location = new System.Drawing.Point(233, 146);
-            this.OKbutton.Name = "OKbutton";
-            this.OKbutton.Size = new System.Drawing.Size(35, 23);
-            this.OKbutton.TabIndex = 15;
-            this.OKbutton.Text = "Ok";
-            this.OKbutton.UseVisualStyleBackColor = true;
+            this.button.Image = global::SisAgroVeterinaria.Properties.Resources.x_17_327;
+            this.button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button.Location = new System.Drawing.Point(206, 328);
+            this.button.Name = "button";
+            this.button.Size = new System.Drawing.Size(80, 44);
+            this.button.TabIndex = 14;
+            this.button.Text = "Eliminar";
+            this.button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button.UseVisualStyleBackColor = true;
+            this.button.Click += new System.EventHandler(this.button_Click);
             // 
             // Buscarbutton
             // 
@@ -153,12 +131,13 @@
             this.Buscarbutton.Size = new System.Drawing.Size(50, 30);
             this.Buscarbutton.TabIndex = 13;
             this.Buscarbutton.UseVisualStyleBackColor = true;
+            this.Buscarbutton.Click += new System.EventHandler(this.Buscarbutton_Click);
             // 
             // Nuevobutton
             // 
             this.Nuevobutton.Image = global::SisAgroVeterinaria.Properties.Resources.new_24_323;
             this.Nuevobutton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Nuevobutton.Location = new System.Drawing.Point(56, 326);
+            this.Nuevobutton.Location = new System.Drawing.Point(28, 328);
             this.Nuevobutton.Name = "Nuevobutton";
             this.Nuevobutton.Size = new System.Drawing.Size(80, 44);
             this.Nuevobutton.TabIndex = 11;
@@ -171,7 +150,7 @@
             // 
             this.Guardarbutton.Image = global::SisAgroVeterinaria.Properties.Resources.Save_as3;
             this.Guardarbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Guardarbutton.Location = new System.Drawing.Point(147, 326);
+            this.Guardarbutton.Location = new System.Drawing.Point(119, 328);
             this.Guardarbutton.Name = "Guardarbutton";
             this.Guardarbutton.Size = new System.Drawing.Size(80, 44);
             this.Guardarbutton.TabIndex = 0;
@@ -186,16 +165,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(298, 397);
-            this.Controls.Add(this.OKbutton);
-            this.Controls.Add(this.Masbutton);
+            this.Controls.Add(this.button);
             this.Controls.Add(this.Buscarbutton);
             this.Controls.Add(this.Nuevobutton);
-            this.Controls.Add(this.NombretextBox);
             this.Controls.Add(this.FechatextBox);
             this.Controls.Add(this.CantidadtextBox);
             this.Controls.Add(this.ProductotextBox);
             this.Controls.Add(this.IdtextBox);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -215,16 +191,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.TextBox IdtextBox;
         private System.Windows.Forms.TextBox ProductotextBox;
         private System.Windows.Forms.TextBox CantidadtextBox;
         private System.Windows.Forms.TextBox FechatextBox;
-        private System.Windows.Forms.TextBox NombretextBox;
         private System.Windows.Forms.Button Nuevobutton;
         private System.Windows.Forms.Button Buscarbutton;
-        private System.Windows.Forms.Button Masbutton;
-        private System.Windows.Forms.Button OKbutton;
+        private System.Windows.Forms.Button button;
     }
 }

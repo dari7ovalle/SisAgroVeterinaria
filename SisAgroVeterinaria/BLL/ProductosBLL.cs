@@ -108,6 +108,24 @@ namespace SisAgroVeterinaria.BLL
             return producto;
         }
 
+        public static List<Productos> GetProductoNombre(string nombre)
+        {
+            List<Productos> lista = new List<Productos>();
+            SisAgroveterinariaDb context = new SisAgroveterinariaDb();
+            lista = context.productos.Where(c => c.Nombre == nombre).ToList();
+            return lista;
+        }
+        //busca esto nigga
+        public static List<Productos> ListarTodo()
+        {
+            List<Productos> lista = null;
+            SisAgroveterinariaDb context = new SisAgroveterinariaDb();
+
+            lista = context.productos.ToList();
+
+
+            return lista;
+        }
 
 
 

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SisAgroVeterinaria.BLL
 {
-   public class ClienteBLL
+    public class ClienteBLL
     {
 
         public static bool Guardar(Clientes cliente)
@@ -54,65 +54,81 @@ namespace SisAgroVeterinaria.BLL
         }
 
         public static Clientes Buscar(int Id)
-    {
-        Clientes cliente = new Clientes();
-        try
         {
-            SisAgroveterinariaDb context = new SisAgroveterinariaDb();
+            Clientes cliente = new Clientes();
+            try
+            {
+                SisAgroveterinariaDb context = new SisAgroveterinariaDb();
                 cliente = context.clientes.Find(Id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return cliente;
+
         }
-        catch (Exception)
+
+        public static bool Eliminar(int clienteId)
         {
-            throw;
-        }
-
-        return cliente;
-
-    }
-
-    public static bool Eliminar(int clienteId)
-    {
-        Clientes cliente = null;
-        bool estado = false;
-        try
-        {
-            SisAgroveterinariaDb context = new SisAgroveterinariaDb();
+            Clientes cliente = null;
+            bool estado = false;
+            try
+            {
+                SisAgroveterinariaDb context = new SisAgroveterinariaDb();
                 cliente = context.clientes.Find(clienteId);
-            context.clientes.Remove(cliente);
-            context.SaveChanges();
+                context.clientes.Remove(cliente);
+                context.SaveChanges();
 
-            estado = true;
+                estado = true;
 
+            }
+            catch (Exception)
+            {
+                throw;
+
+            }
+            return estado;
         }
-        catch (Exception)
-        {
-            throw;
 
-        }
-        return estado;
-    }
-
-    public static List<Clientes> GetList(Expression<Func<Clientes, bool>> criterioBusqueda)
-    {
-        List<Clientes> clientes = new List<Clientes>();
-        try
+        public static List<Clientes> GetList(Expression<Func<Clientes, bool>> criterioBusqueda)
         {
-            SisAgroveterinariaDb context = new SisAgroveterinariaDb();
+            List<Clientes> clientes = new List<Clientes>();
+            try
+            {
+                SisAgroveterinariaDb context = new SisAgroveterinariaDb();
                 clientes = context.clientes.Where(criterioBusqueda).ToList();
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return clientes;
         }
 
-        catch (Exception)
+        public static List<Clientes> GetClientesNombre(string nombre)
         {
-            throw;
+            List<Clientes> lista = new List<Clientes>();
+            SisAgroveterinariaDb context = new SisAgroveterinariaDb();
+            lista = context.clientes.Where(c => c.Nombres == nombre).ToList();
+            return lista;
+        }
+        //busca esto nigga
+        public static List<Clientes> ListarTodo()
+        {
+            List<Clientes> lista = null;
+            SisAgroveterinariaDb context = new SisAgroveterinariaDb();
+            
+                lista = context.clientes.ToList();
+            
+
+            return lista;
         }
 
-        return clientes;
+
     }
-
-
-
-
 
 }
-
-    }

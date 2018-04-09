@@ -30,7 +30,7 @@ namespace SisAgroVeterinaria.Registros
 
             Ciudades ciudades = new Ciudades();
             ciudades.Nombres = NombrestextBox.Text;
-            ciudades.CiudadId = int.Parse(IdtextBox.Text);
+            //ciudades.CiudadId = int.Parse(IdtextBox.Text);
             return ciudades;
           
         }

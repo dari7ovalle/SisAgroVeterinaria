@@ -136,6 +136,7 @@
             this.Eliminarbutton.Text = "Eliminar";
             this.Eliminarbutton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Eliminarbutton.UseVisualStyleBackColor = true;
+            this.Eliminarbutton.Click += new System.EventHandler(this.Eliminarbutton_Click);
             // 
             // Guardarbutton
             // 
@@ -171,6 +172,7 @@
             this.Buscarbutton1.Size = new System.Drawing.Size(50, 30);
             this.Buscarbutton1.TabIndex = 11;
             this.Buscarbutton1.UseVisualStyleBackColor = true;
+            this.Buscarbutton1.Click += new System.EventHandler(this.Buscarbutton1_Click);
             // 
             // rProductos
             // 

@@ -122,10 +122,28 @@ namespace SisAgroVeterinaria.BLL
                 return usuario;
             }
 
-
-
-
-
+        public static List<Usuarios> GetUsuariosNombre(string nombre)
+        {
+            List<Usuarios> lista = new List<Usuarios>();
+            SisAgroveterinariaDb context = new SisAgroveterinariaDb();
+            lista = context.usuarios.Where(c => c.Nombres == nombre).ToList();
+            return lista;
         }
+        //busca esto nigga
+        public static List<Usuarios> ListarTodo()
+        {
+            List<Usuarios> lista = null;
+            SisAgroveterinariaDb context = new SisAgroveterinariaDb();
+
+            lista = context.usuarios.ToList();
+
+
+            return lista;
+        }
+
+
+
+
     }
+}
 

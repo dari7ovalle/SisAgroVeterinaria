@@ -111,10 +111,46 @@ namespace SisAgroVeterinaria.BLL
         }
 
 
+        public static List<Ciudades> GetList()
+        {
+            var lista = new List<Ciudades>();
+            SisAgroveterinariaDb context = new SisAgroveterinariaDb();
+            
+                try
+                {
+                    lista = context.ciudades.ToList();
+                }
+                catch (Exception e)
+                {
+                    lista = null;
+                }
+            
+            return lista;
+        }
 
+
+        public static List<Ciudades> GetCiudadNombre(string nombre)
+        {
+            List<Ciudades> lista = new List<Ciudades>();
+            SisAgroveterinariaDb context = new SisAgroveterinariaDb();
+            lista = context.ciudades.Where(c => c.Nombres == nombre).ToList();
+            return lista;
+        }
+        //busca esto nigga
+        public static List<Ciudades> ListarTodo()
+        {
+            List<Ciudades> lista = null;
+            SisAgroveterinariaDb context = new SisAgroveterinariaDb();
+
+            lista = context.ciudades.ToList();
+
+
+            return lista;
+        }
 
 
     }
 }
+
 
 
